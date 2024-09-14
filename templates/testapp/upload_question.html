@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add questions</title>
+    <style>
+        body{
+            background-image: url("https://images.unsplash.com/photo-1725455510558-3bf31a46e13b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDcwfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D");
+      
+      background-repeat: no-repeat;  
+    background-size: cover;
+color: white;}
+        .main-heading{
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* background-color: rgb(132, 71, 71); */
+            color: white;
+            height: 614px;
+        }
+        .submit-botton{
+           width: 150px;
+           border-radius: 10px;
+           margin-left: 90px;
+           font-size: 20px;
+           background-color: rgb(154, 154, 174);
+           margin-bottom: 40px;
+           padding: 5px 0px ;
+        }
+        input{
+            width: 340px;
+            border-radius: 10px;
+            height: 30px;
+        }
+        .submit-botton:hover{
+            color: white;
+            cursor: pointer;
+        }
+        .home-page-button{
+           width: 200px;
+           border-radius: 10px;
+           margin-left: 20px;
+           font-size: 20px;
+           background-color: rgb(154, 154, 174);
+           margin-bottom: 40px;
+           text-decoration: none;
+           padding: 5px 20px;
+         color: black;
+        }
+        .home-page-button:hover{
+            cursor: pointer;
+            color: white;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Welcome add  more quiz questions so  that other can test there skills </h1>
+   <div class="container">
+<form  method="post">
+    {%csrf_token %}
+    {{form.as_p}}
+    <button class="submit-botton" onclick="alert('thank you anwer added successfully and new record !')">Submit</button>
+    <a href="/" class="home-page-button">Home Page</a>
+</form>
+</div>
+</body>
+</html>

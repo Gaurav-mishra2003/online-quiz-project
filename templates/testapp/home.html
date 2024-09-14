@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body{
+            /* background-color: blanchedalmond; */
+            /* background-color: rgb(255, 255, 255); */
+          background-image: url("https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+       .container{
+        width: 60%;
+        height: 500px;
+        /* background-color: 	rgb(255, 255, 255); */
+        color: rgb(231, 216, 216);
+        text-align: center;
+        border-radius: 10px;
+
+       }
+       .home-button{
+        padding: 5px 50px;
+        margin-top: 35px;
+        margin-left: 15px;
+        font-size: 15px;
+        border-radius: 10px;
+       }
+       .sub-container{
+        padding-top: 150px;
+        line-height: 40px;
+       }
+       .outer-container{
+        display: flex;
+        justify-content: center;
+       
+       }
+       .home-button a{
+        text-decoration: none;
+        
+       }
+       .home-button a:hover{
+        color: red;
+       }
+.nav-bar{
+   height: 80px;
+   /* background-color: rgb(255, 255, 255); */
+   display: flex;
+   margin-bottom: 60px;
+   border: 1px solid rgb(56, 50, 47);
+    
+}
+.nav-bar-content{
+
+    padding: 20px;
+    margin-left: 100px;
+    
+  
+
+}
+.nav-bar-content a{
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(22, 22, 22);
+}
+.nav-bar-content a:hover{
+    
+    color: rgb(251, 8, 8);
+}
+#logo{
+    margin: 0px;
+}
+.footer-text{
+    color: white;
+    text-align: center;
+   
+
+}
+.footer-container{
+    background-color: black;
+    height: 100px;
+    text-align: center;
+
+}
+
+       
+   
+   
+    </style>
+</head>
+<body>
+          
+          <div class="nav-bar">
+            {% if user.is_authenticated %}
+            <div class="nav-bar-content" id ="logo"><a href="/" >QuizApp</a></div>
+            <div class="nav-bar-content"><a href="/">Home</a></div>
+            <!-- <div class="nav-bar-content"><a href="accounts/login">Login</a></div>
+            <div class="nav-bar-content"><a href="/signup/">Sign Up</a></div> -->
+            <div class="nav-bar-content"><a href="accounts/logout">log out</a></div>
+            <div class="nav-bar-content"><a href="/">Profile</a></div>
+
+            {% else %}
+            <div class="nav-bar-content" id ="logo"><a href="/" >QuizApp</a></div>
+            <div class="nav-bar-content"><a href="/">Home</a></div>
+            <div class="nav-bar-content"><a href="accounts/login">Login</a></div>
+            <div class="nav-bar-content"><a href="/signup/">Sign Up</a></div>
+            <!-- <div class="nav-bar-content"><a href="accounts/logout">log out</a></div> -->
+            <div class="nav-bar-content"><a href="/">Profile</a></div>
+            {% endif %}
+            <!-- <a href="/" class="nav-bar-content">quiz</a>
+            <a href="/" class="nav-bar-content">Home</a>
+            <a href="/" class="nav-bar-content">Sign Up</a>
+            <a href="/" class="nav-bar-content">Login</a>
+            <a href="/" class="nav-bar-content">Logout</a>
+            <a href="/" class="nav-bar-content">Profile</a> -->
+          </div>
+
+
+
+
+
+  
+    <div class="outer-container">
+    <div class="container">
+        <div class="sub-container">
+        <h1>Welcome to Assesment </h1>
+        <h2>Dear  You can Easily Test and Start Your Quiz</h2>
+        <div class="heading3">Start Quiz to Test yourself</div>
+        <!-- <button class="home-button"><a href="/startquiz/">start</a></button> -->
+        <button class="home-button"><a href="/privacy/">start</a></button>
+        <button class="home-button"><a href="/notice/">Read Condition</a></button>
+        <button class="home-button"><a href="/addquiz/">Add Quiz</a></button>
+    </div>
+    </div>
+</div>
+
+
+<!-- about section  -->
+
+
+div
+<!-- footer of the website-->
+ <br><br><br><br><br>
+ <div class="footer-container">
+ <span class="footer-text">
+    copywrite @2024
+    Made by Gaurav mishra
+ </span>
+</div>
+</body>
+</html>

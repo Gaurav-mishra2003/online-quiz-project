@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            color: rgb(234, 212, 255);
+            background-color: rgb(228, 154, 43);
+
+        }
+
+        p {
+            letter-spacing: 1.5px;
+            line-height: 25px;
+        }
+
+        .ques {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .container {
+            width: 60%;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: rgb(58, 58, 91);
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 25px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .submit-button {
+            background-color: black;
+            color: white;
+            padding: 9px 22px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-decoration: none;
+        }
+
+        .submit-button:hover {
+            cursor: pointer;
+            color: rgb(255, 236, 254);
+            background-color: rgb(1, 221, 1);
+        }
+
+        input {
+            border-radius: 20px;
+            width: 250px;
+            height: 30px;
+            font-size: 10px;
+            margin-top: 20px;
+        }
+
+        .main {
+            /* border: 1px solid black; */
+            margin-left: 70px;
+            margin-bottom: 50px;
+
+        }
+
+        .notice {
+            font-size: 25px;
+        }
+
+        .outer-notice-container {
+            /* margin:0px auto;
+  width: 800px; */
+            background-color: black;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            padding-top: 40px;
+
+        }
+
+        .opt1 {
+            letter-spacing: 1.5px;
+            line-height: 25px;
+        }
+
+        .home-page-button {
+            width: 200px;
+            border-radius: 10px;
+            margin-left: 20px;
+            font-size: 20px;
+            background-color: rgb(154, 154, 174);
+            margin-bottom: 40px;
+            text-decoration: none;
+            padding: 5px 20px;
+            color: black;
+            margin: 0px auto;
+        }
+
+        .home-page-button:hover {
+            cursor: pointer;
+            color: white;
+        }
+
+        .show-timer {
+            width: 100px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="outer-notice-container">
+        <div>
+            <h1> Welcome to Online Quiz <input type="text" class="show-timer"></h1>
+            <div class="notice">Notice</div>
+            <div class="main">
+                <p>1. before end of time you need to solve quiz </p>
+                <p>2. One quiz answer submit only once</p>
+                <p>3.If you submit answer more than one time score will become 0</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% if data_list %}
+    <div class="main-container">
+        {% for data in p_items %}
+        <div class="container">
+            <form method="post">
+                <p class="ques">question {{data.id}}.{{data.ques}}</p>
+                <div class="opt1">a. {{data.A}}</div>
+                <div class="opt1">b. {{data.B}}</div>
+                <div class="opt1">c. {{data.C}}</div>
+                <div class="opt1">d. {{data.D}}</div>
+                {{form.as_p}}
+              
+                {% csrf_token %}
+
+                
+                {% if p_items.has_previous %}
+                <a href="?page={{p_items.previous_page_number}}" class="submit-button">previous</a>
+                {% endif %}
+                <button class="submit-button">submit</button>
+             <!-- {% if p_items.paginator.num_page %} -->
+             
+                <!-- {% endif %} -->
+               
+                {% if p_items.has_next %}
+                <a href="?page={{p_items.next_page_number}}" class="submit-button">next</a>
+                {% endif %}
+                <a href="/result" class="submit-button">Result</a>
+             
+            </form>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <hr>
+    <hr><br>
+    {% else %}
+    <p>No question faund ! talk with examinner</p>
+    {% endif %}
+
+    <script>
+        let cnt = 20;
+        showTimer = document.querySelector('.show-timer');
+        mainContainer=document.querySelector('.main-container');
+        outerContainer = document.querySelector('.outer-notice-container');
+        scoreButton=document.querySelector('.home-page-button');
+        let intervalId = setInterval(() => {
+            cnt--;
+            showTimer.value = cnt;
+            if (cnt ==0) {
+                clearInterval(intervalId);
+                outerContainer.textContent = `Better Luck ! 
+                Thanks For Joining Quiz Time Endded Try Next Time`;
+                mainContainer.textContent=' ';
+                scoreButton.textContent='See Score';
+
+            }
+        }, 1000)
+
+
+  </script>
+</body>
+
+</html>
